@@ -143,8 +143,8 @@ spring.datasource.password=
 +----------------+        +----------------+
 |  Google OAuth2 |        |  GitHub OAuth2 |
 +----------------+        +----------------+
-
 ---
+
 ## 👥 Developer
 
 **Justin Andry Diva**  
