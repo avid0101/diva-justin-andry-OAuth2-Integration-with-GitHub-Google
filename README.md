@@ -35,21 +35,21 @@ This project showcases session-based security, automatic user registration, and 
 
 oauth2login/
 ├── src/
-│   └── main/
-│       ├── java/
-│       │   └── divajustinandry/oauth2login/
-│       │       ├── Oauth2loginApplication.java
-│       │       ├── config/
-│       │       ├── controller/
-│       │       ├── model/
-│       │       ├── repository/
-│       │       └── service/
-│       └── resources/
-│           ├── templates/
-│           │   ├── home.html
-│           │   └── profile.html
-│           ├── static/
-│           └── application.properties
+│ └── main/
+│ ├── java/
+│ │ └── divajustinandry/oauth2login/
+│ │ ├── Oauth2loginApplication.java
+│ │ ├── config/
+│ │ ├── controller/
+│ │ ├── model/
+│ │ ├── repository/
+│ │ └── service/
+│ └── resources/
+│ ├── templates/
+│ │ ├── home.html
+│ │ └── profile.html
+│ ├── static/
+│ └── application.properties
 ├── pom.xml
 └── README.md
 ---
@@ -149,32 +149,31 @@ GET	/logout	Logout and redirect home
 🧩 Architecture Diagram
 ## 🧩 System Architecture
 
-```mermaid
 graph TD
-    subgraph Presentation Layer
-        UI[Thymeleaf Frontend]
+    subgraph Frontend
+        FE[Thymeleaf Templates]
     end
 
-    subgraph Application Layer
-        APP[Spring Boot Application]
-        SEC[Spring Security OAuth2]
+    subgraph Backend
+        BE[Spring Boot + Spring Security]
+        DB[(H2 / MySQL / PostgreSQL)]
+    %% H2 is for development only
     end
 
-    subgraph Data Layer
-        DB[(H2 / MySQL / PostgreSQL Database)]
+    subgraph OAuth2 Providers
+        Google[Google OAuth2]
+        GitHub[GitHub OAuth2]
     end
 
-    subgraph External Providers
-        GOOGLE[Google OAuth2]
-        GITHUB[GitHub OAuth2]
-    end
+    FE -->|Login Request| BE
+    BE -->|Fetch & Persist User| DB
+    BE -->|OAuth2 Flow| Google
+    BE -->|OAuth2 Flow| GitHub
+    FE -->|View/Edit Profile| BE
+    FE -->|Logout| BE
 
-    UI --> APP
-    APP --> SEC
-    SEC --> GOOGLE
-    SEC --> GITHUB
-    APP --> DB
-    UI -->|Profile & Logout| APP
+
+
 
 👥 Developer
 
