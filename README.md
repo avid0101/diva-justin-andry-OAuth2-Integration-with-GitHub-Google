@@ -115,7 +115,6 @@ spring.datasource.password=
 ---
 
 ## 🧩 System Architecture
----
 +----------------------+
 |      Frontend        |
 |----------------------|
