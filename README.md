@@ -182,7 +182,6 @@ flowchart TD
     class FE1,FE2,BE1,BE2,BE3,DB,Google,GitHub box;
 
 
-
 👥 Developer
 
 Justin Andry Diva 
