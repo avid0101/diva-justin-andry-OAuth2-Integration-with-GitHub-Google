@@ -152,28 +152,24 @@ GET	/logout	Logout and redirect home
 🧩 Architecture Diagram
 
 ## 🧩 System Architecture
-graph TD
-    subgraph Frontend
-        FE[Thymeleaf Templates]
-    end
 
-    subgraph Backend
-        BE[Spring Boot + Spring Security]
-        DB[(H2 / MySQL / PostgreSQL)]
-    %% H2 is for development only
-    end
+subgraph Backend
+    BE[Spring Boot + Spring Security]
+    DB[(H2 / MySQL / PostgreSQL)]
+%% H2 is for development only
+end
 
-    subgraph OAuth2 Providers
-        Google[Google OAuth2]
-        GitHub[GitHub OAuth2]
-    end
+subgraph OAuth2 Providers
+    Google[Google OAuth2]
+    GitHub[GitHub OAuth2]
+end
 
-    FE -->|Login Request| BE
-    BE -->|Fetch & Persist User| DB
-    BE -->|OAuth2 Flow| Google
-    BE -->|OAuth2 Flow| GitHub
-    FE -->|View/Edit Profile| BE
-    FE -->|Logout| BE
+FE --&gt;|Login Request| BE
+BE --&gt;|Fetch &amp; Persist User| DB
+BE --&gt;|OAuth2 Flow| Google
+BE --&gt;|OAuth2 Flow| GitHub
+FE --&gt;|View/Edit Profile| BE
+FE --&gt;|Logout| BE
 
 👥 Developer
 
