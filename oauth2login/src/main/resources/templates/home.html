@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In | OAuth2 Login-Diva</title>
+    <style>
+        body {
+            font-family: "Inter", "Segoe UI", sans-serif;
+            background: #0f172a;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+
+        .container {
+            background: #1e293b;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            text-align: center;
+            width: 360px;
+            animation: fadeIn 0.8s ease;
+        }
+
+        h1 {
+            color: #e2e8f0;
+            margin-bottom: 1.2rem;
+            font-size: 1.5rem;
+        }
+
+        p {
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+        }
+
+        .button {
+            display: block;
+            padding: 12px 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .google {
+            background-color: #db4437;
+            color: white;
+        }
+
+        .github {
+            background-color: #24292f;
+            color: white;
+        }
+
+        .button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Welcome</h1>
+    <p>Sign in to continue</p>
+    <a class="button google" href="/oauth2/authorization/google">Login with Google</a>
+    <a class="button github" href="/oauth2/authorization/github">Login with GitHub</a>
+</div>
+</body>
+</html>
