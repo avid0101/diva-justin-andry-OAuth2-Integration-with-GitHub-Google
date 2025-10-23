@@ -35,24 +35,23 @@ This project showcases session-based security, automatic user registration, and 
 
 oauth2login/
 ├── src/
-│ └── main/
-│ ├── java/divajustinandry/oauth2login/
-│ │ ├── Oauth2loginApplication.java
-│ │ ├── config/
-│ │ ├── controller/
-│ │ ├── model/
-│ │ ├── repository/
-│ │ └── service/
-│ └── resources/
-│ ├── templates/
-│ │ ├── home.html
-│ │ └── profile.html
-│ ├── static/
-│ └── application.properties
+│   └── main/
+│       ├── java/
+│       │   └── divajustinandry/oauth2login/
+│       │       ├── Oauth2loginApplication.java
+│       │       ├── config/
+│       │       ├── controller/
+│       │       ├── model/
+│       │       ├── repository/
+│       │       └── service/
+│       └── resources/
+│           ├── templates/
+│           │   ├── home.html
+│           │   └── profile.html
+│           ├── static/
+│           └── application.properties
 ├── pom.xml
 └── README.md
-
-
 ---
 
 ## 🧭 Getting Started
