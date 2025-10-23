@@ -114,7 +114,7 @@ spring.datasource.password=
 
 ---
 
-## 🧩 System Architecture
+## 🧩 Architecture Diagram
 
 ```
 +----------------------+
