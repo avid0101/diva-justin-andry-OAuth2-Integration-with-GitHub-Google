@@ -7,15 +7,15 @@ This project showcases session-based security, automatic user registration, and 
 
 ## 🚀 Features
 
-- 🔐 OAuth2 login with **Google** and **GitHub**
-- 🧍 Automatic user registration for first-time logins
-- 🔁 Returning logins link to existing users
+-  OAuth2 login with **Google** and **GitHub**
+-  Automatic user registration for first-time logins
+-  Returning logins link to existing users
 - 👤 User profile:
   - View `displayName`, `bio`, `avatar`, and `email`
   - Edit `displayName` and `bio`
-- 🧱 Session-based authentication (no JWT)
-- 💾 H2 in-memory database for development
-- 🛡️ CSRF protection enabled
+-  Session-based authentication (no JWT)
+-  H2 in-memory database for development
+-  CSRF protection enabled
 
 ---
 
@@ -28,32 +28,6 @@ This project showcases session-based security, automatic user registration, and 
 | **Authentication** | spring-boot-starter-oauth2-client |
 | **Frontend** | Thymeleaf templates |
 | **Language / Build Tool** | Java 21, Maven |
-
----
-
-## 📁 Project Structure
-
-oauth2login/
-├── src/
-│   └── main/
-│       ├── java/divajustinandry/oauth2login/
-│       │   ├── Oauth2loginApplication.java
-│       │   ├── config/
-│       │   ├── controller/
-│       │   ├── model/
-│       │   ├── repository/
-│       │   └── service/
-│       └── resources/
-│           ├── templates/
-│           │   ├── home.html
-│           │   └── profile.html
-│           ├── static/
-│           └── application.properties
-├── mvnw
-├── mvnw.cmd
-├── pom.xml
-└── README.md
-
 
 ---
 
@@ -120,11 +94,12 @@ http://localhost:8080/login/oauth2/code/github
 
 Copy your Client ID and Client Secret
 
-🔸 Add Environment Variables
-GOOGLE_CLIENT_ID=<your_google_client_id>
-GOOGLE_CLIENT_SECRET=<your_google_client_secret>
-GITHUB_CLIENT_ID=<your_github_client_id>
-GITHUB_CLIENT_SECRET=<your_github_client_secret>
+🔸 Paste this on the Command Prompt
+
+set GOOGLE_CLIENT_ID=<your_google_client_id>
+set GOOGLE_CLIENT_SECRET=<your_google_client_secret>
+set GITHUB_CLIENT_ID=<your_github_client_id>
+set GITHUB_CLIENT_SECRET=<your_github_client_secret>
 
 ▶️ Running the Application
 mvn spring-boot:run
@@ -153,23 +128,60 @@ GET	/logout	Logout and redirect home
 
 ## 🧩 System Architecture
 
-subgraph Backend
-    BE[Spring Boot + Spring Security]
-    DB[(H2 / MySQL / PostgreSQL)]
-%% H2 is for development only
-end
+%% OAuth2 Login App Architecture Diagram
+flowchart TD
 
-subgraph OAuth2 Providers
-    Google[Google OAuth2]
-    GitHub[GitHub OAuth2]
-end
+    %% ===============================
+    %% Frontend Layer
+    %% ===============================
+    subgraph Frontend ["🌐 Frontend (ReactJS / Thymeleaf)"]
+        FE1["Home Page (Login Buttons)"]
+        FE2["Profile Page (View / Edit)"]
+    end
 
-FE --&gt;|Login Request| BE
-BE --&gt;|Fetch &amp; Persist User| DB
-BE --&gt;|OAuth2 Flow| Google
-BE --&gt;|OAuth2 Flow| GitHub
-FE --&gt;|View/Edit Profile| BE
-FE --&gt;|Logout| BE
+    %% ===============================
+    %% Backend Layer
+    %% ===============================
+    subgraph Backend ["⚙️ Backend (Spring Boot + Spring Security)"]
+        BE1["OAuth2 Controller"]
+        BE2["User Controller (Profile APIs)"]
+        BE3["CustomOAuth2UserService"]
+        DB[("🗄️ Database<br/>(H2 / MySQL / PostgreSQL)")]
+    end
+
+    %% ===============================
+    %% OAuth2 Providers
+    %% ===============================
+    subgraph OAuthProviders ["🔐 OAuth2 Providers"]
+        Google["Google OAuth2"]
+        GitHub["GitHub OAuth2"]
+    end
+
+    %% ===============================
+    %% Flows
+    %% ===============================
+    FE1 -->|User clicks 'Login with Google/GitHub'| BE1
+    BE1 -->|Redirects to Provider| Google
+    BE1 -->|Redirects to Provider| GitHub
+    Google -->|Returns Auth Token| BE1
+    GitHub -->|Returns Auth Token| BE1
+
+    BE1 -->|Fetch & Persist User Data| BE3
+    BE3 -->|Save/Update User Info| DB
+
+    FE2 -->|GET /profile| BE2
+    FE2 -->|POST /profile (Update)| BE2
+    BE2 -->|Fetch / Update Profile Data| DB
+
+    FE2 -->|GET /logout| BE1
+
+    %% Styling
+    classDef section fill:#f9f9f9,stroke:#bbb,stroke-width:1px,rounded-corners:10px;
+    classDef box fill:#fff,stroke:#555,stroke-width:1px,rounded-corners:8px,shadow:2px;
+    class Frontend,Backend,OAuthProviders section;
+    class FE1,FE2,BE1,BE2,BE3,DB,Google,GitHub box;
+
+
 
 👥 Developer
 
