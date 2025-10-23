@@ -33,8 +33,7 @@ This project showcases session-based security, automatic user registration, and 
 
 ## 🧭 Getting Started
 
-### 1️⃣ Clone the repository
-
+### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/avid0101/diva-justin-andry-OAuth2-Integration-with-GitHub-Google.git
 cd diva-justin-andry-OAuth2-Integration-with-GitHub-Google
