@@ -36,8 +36,6 @@ This project showcases session-based security, automatic user registration, and 
 ### 1️⃣ Clone the Repository
 
 git clone https://github.com/avid0101/diva-justin-andry-OAuth2-Integration-with-GitHub-Google.git
-cd diva-justin-andry-OAuth2-Integration-with-GitHub-Google
-
 
 ### 2️⃣ Prerequisites
 
@@ -117,14 +115,14 @@ spring.datasource.password=
 ---
 
 ## 🧩 System Architecture
-
+---
 +----------------------+
 |      Frontend        |
 |----------------------|
 |  Thymeleaf / ReactJS |
 +----------+-----------+
            |
-           | Login Request / Profile / Logout
+           |  Login Request / Profile / Logout
            v
 +-------------------------------+
 |            Backend            |
@@ -132,21 +130,21 @@ spring.datasource.password=
 | Spring Boot + Spring Security |
 +---------------+---------------+
                 |
-                | Fetch & Persist User
+                |  Fetch & Persist User
                 v
         +------------------------+
-        |       Database          |
-        |-------------------------|
-        | H2 / MySQL / PostgreSQL |
-        +-------------------------+
+        |       Database         |
+        |------------------------|
+        | H2 / MySQL / PostgreSQL|
+        +------------------------+
                 ^
                 |
-                | OAuth2 Flow
+                |  OAuth2 Flow
 +----------------+        +----------------+
 |  Google OAuth2 |        |  GitHub OAuth2 |
 +----------------+        +----------------+
 
-
+---
 ## 👥 Developer
 
 **Justin Andry Diva**  
