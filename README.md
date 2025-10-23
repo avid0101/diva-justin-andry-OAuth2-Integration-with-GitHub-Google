@@ -35,23 +35,26 @@ This project showcases session-based security, automatic user registration, and 
 
 oauth2login/
 ├── src/
-│ └── main/
-│ ├── java/
-│ │ └── divajustinandry/oauth2login/
-│ │ ├── Oauth2loginApplication.java
-│ │ ├── config/
-│ │ ├── controller/
-│ │ ├── model/
-│ │ ├── repository/
-│ │ └── service/
-│ └── resources/
-│ ├── templates/
-│ │ ├── home.html
-│ │ └── profile.html
-│ ├── static/
-│ └── application.properties
+│   └── main/
+│       ├── java/divajustinandry/oauth2login/
+│       │   ├── Oauth2loginApplication.java
+│       │   ├── config/
+│       │   ├── controller/
+│       │   ├── model/
+│       │   ├── repository/
+│       │   └── service/
+│       └── resources/
+│           ├── templates/
+│           │   ├── home.html
+│           │   └── profile.html
+│           ├── static/
+│           └── application.properties
+├── mvnw
+├── mvnw.cmd
 ├── pom.xml
 └── README.md
+
+
 ---
 
 ## 🧭 Getting Started
@@ -147,8 +150,8 @@ GET	/profile	View user profile
 POST	/profile	Update display name or bio
 GET	/logout	Logout and redirect home
 🧩 Architecture Diagram
-## 🧩 System Architecture
 
+## 🧩 System Architecture
 graph TD
     subgraph Frontend
         FE[Thymeleaf Templates]
@@ -171,9 +174,6 @@ graph TD
     BE -->|OAuth2 Flow| GitHub
     FE -->|View/Edit Profile| BE
     FE -->|Logout| BE
-
-
-
 
 👥 Developer
 
